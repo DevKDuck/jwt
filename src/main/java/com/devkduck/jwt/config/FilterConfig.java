@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.devkduck.jwt.filter.MyFilter1;
 import com.devkduck.jwt.filter.MyFilter2;
+import com.devkduck.jwt.filter.MyFilter3;
 
 
 /*
