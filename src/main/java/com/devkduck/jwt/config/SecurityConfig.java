@@ -7,7 +7,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
+
+import com.devkduck.jwt.filter.MyFilter1;
+import com.devkduck.jwt.filter.MyFilter3;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +36,7 @@ public class SecurityConfig {
         .httpBasic(basic -> basic.disable())
         .csrf(csrf -> csrf.disable())
         .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .addFilterBefore(new MyFilter3(),BasicAuthenticationFilter.class)
         .addFilter(corsFilter) // @CrossOrigin 인증이 없을때 , 인증이 있을때 필터에 등록 
         .build();
 		
